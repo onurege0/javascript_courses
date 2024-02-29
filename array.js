@@ -420,3 +420,75 @@ console.log(videogame.hasOwnProperty("genre"));
 console.log(Object.entries(videogame));
 console.log(Object.keys(videogame));
 console.log(Object.values(videogame));
+
+function updateRecords(records, id, prop, value) {
+  if (value === "") {
+    delete records[id][prop];
+  } else if (prop !== "tracks" && value !== "") {
+    records[id][prop] = value;
+  } else if (prop === "tracks" && value !== "") {
+    if (records[id].hasOwnProperty("tracks") === false) {
+      records[id][prop] = [];
+    }
+    records[id][prop].push(value);
+  }
+  return records;
+}
+
+function lookUpProfile(name, prop) {
+  for (let i = 0; i < contacts.length; i++) {
+    if (name === contacts[i].firstName) {
+      if (contacts[i].hasOwnProperty(prop)) {
+        return contacts[i][prop];
+      } else {
+        return "No such property";
+      }
+    }
+  }
+  return "No such contact";
+}
+
+let num10 = 10;
+let num11 = num10;
+num10 = 100;
+console.log(num11);
+
+const arr = [1, 2, 3];
+const arr1 = arr;
+console.log(arr1);
+arr.push(4);
+console.log(arr1);
+
+const colors = ["blue", "red"];
+const colors1 = ["green", "yellow"];
+
+const newColors = [...colors, ...colors1];
+console.log(newColors);
+
+const newColors1 = [...colors, "black"];
+console.log(newColors1);
+
+const student1 = { firstName: "ege", lastName: "erkek" };
+const student1contact = { email: "x.com", phone: 2425 };
+
+const student2 = { ...student1, ...student1contact };
+console.log(student2);
+
+function genEvenNum(...numbers) {
+  const evenNum = [];
+  for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+      evenNum.push(numbers[i]);
+    }
+  }
+  return evenNum;
+}
+
+const nums = [1, 2, 3, 4, 5];
+console.log(genEvenNum(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+console.log(genEvenNum(nums));
+
+const [firstNum, secondNum, ...otherNums] = nums
+console.log(firstNum);
+console.log(secondNum);
+console.log(otherNums);
