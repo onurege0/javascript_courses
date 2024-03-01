@@ -34,14 +34,14 @@ const student = {
 
 //shallow copy
 const studentInfo = { ...student, phone: 2324 };
-console.log(studentInfo);
-console.log(student);
+// console.log(studentInfo);
+// console.log(student);
 
 //deep copy
 const studentInfo1 = JSON.parse(JSON.stringify({ ...student, phone: 2324 }));
-console.log(studentInfo1);
+// console.log(studentInfo1);
 
-console.log(Object.is(studentInfo, studentInfo1));
+// console.log(Object.is(studentInfo, studentInfo1));
 
 // const add = (num1, num2) => {
 //   return num1 + num2;
@@ -102,31 +102,78 @@ function createEvenNums(index) {
   return newArr;
 }
 
-
-const students1 = ["Berkay", "Cenk", "Mert", "Orkun", "Hicran", "Buse", "Onder"];
+const students1 = [
+  "Berkay",
+  "Cenk",
+  "Mert",
+  "Orkun",
+  "Hicran",
+  "Buse",
+  "Onder",
+];
 
 const ourOwnMap = (arr, callbackFn) => {
-    const newArr = [];
-    for (let index = 0; index < arr.length; index++) {
-        const callbackResult = callbackFn(arr[index], index, arr);
-        newArr.push(callbackResult);
-    }
-    return newArr;
-}
+  const newArr = [];
+  for (let index = 0; index < arr.length; index++) {
+    const callbackResult = callbackFn(arr[index], index, arr);
+    newArr.push(callbackResult);
+  }
+  return newArr;
+};
 
 // console.log(ourOwnMap(students, student => student.toUpperCase()));
 // console.log(students);
 
-const mapResult = ourOwnMap(
-    students,
-    (student, index) => {
-        if (!(index % 2)) {
-            return student;
-        }
-        // else {
-        //     return students.pop()
-        // }
-    }
-);
+const mapResult = ourOwnMap(students, (student, index) => {
+  if (!(index % 2)) {
+    return student;
+  }
+  // else {
+  //     return students.pop()
+  // }
+});
 
-console.log(mapResult);
+// console.log(mapResult);
+
+//higher order array methods
+//map
+const sayılar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const filteredSayılar = sayılar.map((element) => element + 2);
+// console.log(filteredSayılar);
+
+//forEach
+// sayılar.forEach((element) => console.log(element * 10));
+const filteredByForEachArr = sayılar.forEach((element) => element * 10);
+// console.log(filteredByForEachArr);  undefined sonucu alırız
+
+//filter
+const filteredByFilterArr = sayılar.filter((element) => !(element % 2));
+// console.log(filteredByFilterArr);
+
+//some
+const filteredBySomeArr = sayılar.some((element) => element < 0);
+// console.log(filteredBySomeArr);
+
+//every
+const filteredByEveryArr = sayılar.every((element) => element >= 0);
+// console.log(filteredByEveryArr);
+
+//find
+const filteredByFindArr = sayılar.find((element) => element > 1);
+// console.log(filteredByFindArr);
+
+//findIndex
+const filteredByFindIndexArr = sayılar.findIndex((element) => element < 0);
+// console.log(filteredByFindIndexArr);
+
+//sort
+const isimler = ["ege", "barkın", "mert", "ali"];
+const filteredBySortArr = isimler.sort();
+const filteredBySortArr1 = sayılar.sort((a, b) => a - b);
+// console.log(filteredBySortArr);
+// console.log(isimler);
+// console.log(filteredBySortArr1);
+
+//reduce
+const filteredByReduceArr = sayılar.reduce((total, element) => total + element);
+// console.log(filteredByReduceArr);
