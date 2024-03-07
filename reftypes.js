@@ -138,7 +138,7 @@ const mapResult = ourOwnMap(students, (student, index) => {
 //higher order array methods
 //map
 const sayılar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const filteredSayılar = sayılar.map((element) => element + 2);
+// const filteredSayılar = sayılar.map((element) => element + 2);
 // console.log(filteredSayılar);
 
 //forEach
@@ -173,7 +173,16 @@ const filteredBySortArr1 = sayılar.sort((a, b) => a - b);
 // console.log(filteredBySortArr);
 // console.log(isimler);
 // console.log(filteredBySortArr1);
-
 //reduce
-const filteredByReduceArr = sayılar.reduce((total, element) => total + element);
-// console.log(filteredByReduceArr);
+
+const filteredByReduceArr = sayılar.reduce((total, element) => {
+  return total + element;
+}, 5);
+console.log(filteredByReduceArr);
+
+const numbers = [3, 9, 7, 6, 8, 10, 20, 23, 89, 97];
+const newNumbers = numbers
+  .filter((num) => !(num % 2))
+  .map((num) => num * 5)
+  .reduce((total, num) => total + num);
+  console.log(newNumbers);
